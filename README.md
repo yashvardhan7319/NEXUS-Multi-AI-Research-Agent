@@ -156,5 +156,4 @@ MRLA/
 
 ---
 
-## ⚡ How to Run
-*(The VS Code split-terminal run instructions are included here at the bottom of the final file).*
+
