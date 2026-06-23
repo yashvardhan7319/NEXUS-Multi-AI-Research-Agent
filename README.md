@@ -85,7 +85,7 @@ flowchart LR
 ## ✨ Features
 - **Multi-Agent Orchestration**: Specialized LangChain agents working autonomously in sequence.
 - **Real-Time Streaming**: Server-Sent Events (SSE) stream the pipeline progress live to the UI.
-- **Review & Compare Modes**: Upload your own `.docx` drafts to bypass the search phase and have the Critic Agent review or compare reports locally.
+- **Review & Compare Modes**: Upload your own `.docx` or `.pdf` drafts to bypass the search phase and have the Critic Agent review or compare reports locally.
 - **Stunning UI**: A dark-mode, glassmorphic Next.js interface with Framer Motion micro-animations and an interactive "Orbital Sphere".
 - **Instant Report Generation**: Compiles the final LLM output into styled, in-memory Word (`.docx`) files for immediate download.
 
