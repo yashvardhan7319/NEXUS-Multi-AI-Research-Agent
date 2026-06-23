@@ -91,6 +91,35 @@ flowchart LR
 
 ---
 
+## 📸 Screenshots
+
+### 1. Research Dashboard
+The central hub for NEXUS. This sleek, dark-mode interface features a dynamic "Orbital Sphere" that animates as background agents perform their tasks. You can quickly select between Generate, Review, or Compare modes to start your workflow.
+
+<img src="assets/1-dashboard.png" alt="Dashboard" width="800"/>
+
+### 2. Live Report Generation
+Once a topic is provided, the multi-agent swarm scours the web and generates a beautifully formatted 12-section literature review right before your eyes.
+
+<img src="assets/2-generation.png" alt="Generation of Report" width="800"/>
+
+### 3. Critic's Review Mode
+Bypass the generation phase by uploading your own `.docx` or `.pdf` file. The Critic Agent strictly analyzes your writing, assigns a score out of 10, highlights strengths, and provides actionable feedback to improve your draft.
+
+<img src="assets/3-review.png" alt="Critics Review" width="800"/>
+
+### 4. Comparison Setup
+Prepare to compare two reports side-by-side. Simply provide a research topic for NEXUS to generate a pristine AI report, and upload your own draft on the same topic for comparison.
+
+<img src="assets/4-compare-setup.png" alt="Comparison Setup" width="800"/>
+
+### 5. Final Comparison & Grading
+The ultimate showdown. The Critic Agent compares your uploaded report against the AI-generated report, judging both on structure, credibility, and depth. It declares a winner, outlines key differences, and lets you download the winning report instantly!
+
+<img src="assets/5-compare-result.png" alt="Comparison Result" width="800"/>
+
+---
+
 ## 💻 Tech Stack
 **Frontend:**
 - Next.js 16 (App Router)
