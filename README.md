@@ -1,6 +1,8 @@
 # NEXUS (Multi AI Research Agent)
 
-NEXUS is a powerful, LangChain-based full-stack AI research pipeline. It orchestrates a sequence of intelligent AI agents to autonomously explore topics, scrape raw content, synthesize comprehensive markdown documents, and critique quality reviews.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+**NEXUS** is an autonomous, full-stack AI research assistant. Imagine having a team of specialized researchers working for you around the clock. You simply give NEXUS a topic, and it deploys a swarm of AI agents to scour the live internet, read articles, extract facts, and synthesize everything into a beautifully structured, comprehensive literature review. It then uniquely grades its own work to ensure the highest quality output—saving you hours of manual research and writing.
 
 ---
 
@@ -141,4 +143,31 @@ MRLA/
 
 ---
 
+## ⚡ How to Run
 
+NEXUS is built as a split full-stack application. The easiest way to run it is by using **VS Code's Split Terminal**.
+
+### Step 1: Start the Backend (Terminal 1)
+1. Open the root `MRLA` folder in VS Code.
+2. Open a new terminal and navigate to the backend:
+   ```bash
+   cd backend
+   ```
+3. Activate your virtual environment and start the Python server:
+   ```bash
+   ..\.venv\Scripts\activate
+   python -m uvicorn main:app --host 127.0.0.1 --port 8000
+   ```
+   *(Wait for `Uvicorn running on http://127.0.0.1:8000`)*
+
+### Step 2: Start the Frontend (Terminal 2)
+1. Split your terminal (`Ctrl + Shift + 5`) to open a second pane.
+2. Navigate to the frontend folder and start the Next.js app:
+   ```bash
+   cd frontend
+   npm run dev
+   ```
+   *(Wait for `Local: http://localhost:3000`)*
+
+### Step 3: Begin Researching!
+Hold **`Ctrl`** and click `http://localhost:3000` in your terminal to open the NEXUS dashboard in your browser.
