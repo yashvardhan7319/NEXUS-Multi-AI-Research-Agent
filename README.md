@@ -56,41 +56,26 @@ flowchart TB
 ---
 
 ## 🤖 Agent Workflow
-The NEXUS core operates sequentially, passing data between specialized AI agents:
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#1e1e2e', 'actorBkg': '#0f172a', 'actorBorder': '#38bdf8', 'signalColor': '#fff', 'signalTextColor': '#fff', 'noteBkg': '#a855f7', 'noteTextColor': '#fff'}}}%%
-sequenceDiagram
-    autonumber
-    actor U as 🧑‍💻 User
-    participant S as 🔍 Search Agent
-    participant R as 📖 Reader Agent
-    participant W as ✍️ Writer Agent
-    participant C as 🧠 Critic Agent
-    participant LLM as ⚡ Groq Llama-3
+flowchart LR
+    classDef search fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#fff,rx:8,ry:8
+    classDef reader fill:#0f172a,stroke:#a855f7,stroke-width:2px,color:#fff,rx:8,ry:8
+    classDef writer fill:#0f172a,stroke:#f59e0b,stroke-width:2px,color:#fff,rx:8,ry:8
+    classDef critic fill:#0f172a,stroke:#10b981,stroke-width:2px,color:#fff,rx:8,ry:8
+    classDef user fill:#1e1e2e,stroke:#fff,stroke-width:2px,color:#fff,rx:20,ry:20
+
+    U((👤 User)):::user
+    S[🔍 Search Agent]:::search
+    R[📖 Reader Agent]:::reader
+    W[✍️ Writer Agent]:::writer
+    C[🧠 Critic Agent]:::critic
     
-    U->>S: 1. Submits Research Topic
-    activate S
-    Note over S: Uses Tavily API to find sources
-    S-->>R: 2. Passes Top 10 URLs
-    deactivate S
-    
-    activate R
-    Note over R: Scrapes HTML & strips ads/nav
-    R-->>W: 3. Passes Cleaned Text Context
-    deactivate R
-    
-    activate W
-    W->>LLM: 4. Prompts LLM with Context
-    LLM-->>W: 5. Generates 12-Section Review
-    W-->>C: 6. Passes Draft Markdown
-    deactivate W
-    
-    activate C
-    C->>LLM: 7. Requests strict grading & critique
-    LLM-->>C: 8. Returns Score & Verdict
-    C-->>U: 9. Delivers Final Report to UI
-    deactivate C
+    U -->|1. Submits Topic| S
+    S -->|2. Finds 10 URLs| R
+    R -->|3. Scrapes Content| W
+    W -->|4. Drafts Report| C
+    C -->|5. Grades & Reviews| U
 ```
 
 ---
