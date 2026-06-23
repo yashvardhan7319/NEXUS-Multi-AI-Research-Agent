@@ -91,8 +91,14 @@ flowchart LR
 
 ---
 
-## 📸 Screenshots
+## 📸 Live Demo & Screenshots
 
+### Live Video Demo
+Watch NEXUS autonomously research, synthesize, and critique a topic in real-time.
+
+<video src="assets/DEMO.mp4" controls width="100%"></video>
+
+<br/>
 ### 1. Research Dashboard
 The central hub for NEXUS. This sleek, dark-mode interface features a dynamic "Orbital Sphere" that animates as background agents perform their tasks. You can quickly select between Generate, Review, or Compare modes to start your workflow.
 
