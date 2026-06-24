@@ -10,7 +10,7 @@
 Below is the high-level architecture of how the NEXUS frontend and backend interact:
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#1e1e2e', 'primaryTextColor': '#fff', 'primaryBorderColor': '#7C3AED', 'lineColor': '#8b5cf6', 'secondaryColor': '#0f172a', 'tertiaryColor': '#fff'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#1e1e2e', 'primaryTextColor': '#fff', 'primaryBorderColor': '#7C3AED', 'lineColor': '#8b5cf6', 'secondaryColor': '#0f172a', 'tertiaryColor': 'transparent', 'clusterBkg': 'transparent'}}}%%
 flowchart TB
     classDef frontend fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#fff,rx:8,ry:8;
     classDef backend fill:#0f172a,stroke:#10b981,stroke-width:2px,color:#fff,rx:8,ry:8;
