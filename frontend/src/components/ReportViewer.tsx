@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import API_BASE_URL from "@/config/api";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Copy, Download, Link2, Check } from "lucide-react";
 
@@ -122,7 +123,7 @@ export default function ReportViewer({ report, topic }: ReportViewerProps) {
     if (downloading) return;
     setDownloading(true);
     try {
-      const response = await fetch("http://localhost:8000/api/download", {
+      const response = await fetch(`${API_BASE_URL}/api/download`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import API_BASE_URL from "@/config/api";
 import { motion as motionFramer, AnimatePresence as AnimatePresenceFramer } from "framer-motion";
 import {
   Search,
@@ -30,6 +31,8 @@ import ReportViewer from "@/components/ReportViewer";
 import CriticPanel from "@/components/CriticPanel";
 import ComparePanel from "@/components/ComparePanel";
 import OrbitalSphere from "@/components/OrbitalSphere";
+
+const smoothTransition = { type: "spring", stiffness: 250, damping: 25, mass: 0.5 };
 
 const TOPIC_SUGGESTIONS = [
   "Quantum Computing",
@@ -163,7 +166,7 @@ export default function HomePage() {
     formData.append("file", file);
 
     try {
-      const response = await fetch("http://localhost:8000/api/review", {
+      const response = await fetch(`${API_BASE_URL}/api/review`, {
         method: "POST",
         body: formData,
       });
@@ -272,9 +275,10 @@ export default function HomePage() {
         {viewState !== "done" ? (
           <motionFramer.div
             key="dashboard-view"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.98, filter: "blur(4px)" }}
+            transition={smoothTransition}
             className="w-full max-w-7xl flex-1 flex flex-col space-y-8 py-4"
           >
             {/* Top Navbar */}
@@ -405,9 +409,10 @@ export default function HomePage() {
                       // Search View Form
                       <motionFramer.div
                         key="search-form"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
+                        initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
+                        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                        exit={{ opacity: 0, y: -10, filter: "blur(4px)", transition: { duration: 0.2 } }}
+                        transition={smoothTransition}
                         className="space-y-4"
                       >
                         {/* Tab mode selection */}
@@ -553,9 +558,10 @@ export default function HomePage() {
                       // Running View Log Console
                       <motionFramer.div
                         key="log-console"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
+                        initial={{ opacity: 0, scale: 0.98, filter: "blur(4px)" }}
+                        animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                        exit={{ opacity: 0, filter: "blur(4px)" }}
+                        transition={smoothTransition}
                         className="space-y-3"
                       >
                         <div className="flex items-center justify-between border-b border-border-custom/30 pb-2 text-text-muted font-mono text-[10px]">
@@ -596,9 +602,10 @@ export default function HomePage() {
                   <AnimatePresenceFramer>
                     {activeError && (
                       <motionFramer.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
+                        initial={{ opacity: 0, height: 0, y: -10 }}
+                        animate={{ opacity: 1, height: "auto", y: 0 }}
+                        exit={{ opacity: 0, height: 0, y: -10 }}
+                        transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
                         className="mt-4 p-3.5 bg-rose-500/10 border border-rose-500/20 text-rose-500 rounded-xl text-[10px] flex flex-col space-y-2 text-left"
                       >
                         <div className="font-semibold">{activeError}</div>
@@ -715,10 +722,10 @@ export default function HomePage() {
           // DONE STATE REPORT SCREEN (slides in as overlay)
           <motionFramer.div
             key="done-view-screen"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 50 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            exit={{ opacity: 0, y: 40, filter: "blur(8px)" }}
+            transition={{ type: "spring", stiffness: 200, damping: 25, mass: 0.8 }}
             className="w-full max-w-6xl flex-1 flex flex-col py-6 pb-24"
           >
             {selectedMode === "review" ? (
@@ -786,7 +793,7 @@ export default function HomePage() {
               {report && (
                 <button
                   onClick={async () => {
-                    const response = await fetch("http://localhost:8000/api/download", {
+                    const response = await fetch(`${API_BASE_URL}/api/download`, {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
                       body: JSON.stringify({ content: report, topic }),

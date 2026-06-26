@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef } from "react";
+import API_BASE_URL from "@/config/api";
 
 export type AgentType = "search" | "reader" | "writer" | "critic";
 export type StepStatus = "idle" | "running" | "done" | "failed";
@@ -173,7 +174,7 @@ export function useSSE() {
       setLogs(`[SYSTEM]: Initializing multi-agent research pipeline for topic: "${topic}"\n\n`);
 
       try {
-        const response = await fetch("http://localhost:8000/api/generate", {
+        const response = await fetch(`${API_BASE_URL}/api/generate`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -203,7 +204,7 @@ export function useSSE() {
         formData.append("file", file);
         formData.append("topic", topic);
 
-        const response = await fetch("http://localhost:8000/api/compare", {
+        const response = await fetch(`${API_BASE_URL}/api/compare`, {
           method: "POST",
           body: formData,
         });
