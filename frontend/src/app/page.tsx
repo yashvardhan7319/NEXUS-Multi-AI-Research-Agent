@@ -32,7 +32,7 @@ import CriticPanel from "@/components/CriticPanel";
 import ComparePanel from "@/components/ComparePanel";
 import OrbitalSphere from "@/components/OrbitalSphere";
 
-const smoothTransition = { type: "spring", stiffness: 250, damping: 25, mass: 0.5 };
+const smoothTransition = { type: "spring" as const, stiffness: 250, damping: 25, mass: 0.5 };
 
 const TOPIC_SUGGESTIONS = [
   "Quantum Computing",
@@ -605,7 +605,7 @@ export default function HomePage() {
                         initial={{ opacity: 0, height: 0, y: -10 }}
                         animate={{ opacity: 1, height: "auto", y: 0 }}
                         exit={{ opacity: 0, height: 0, y: -10 }}
-                        transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
+                        transition={{ type: "spring" as const, bounce: 0.2, duration: 0.5 }}
                         className="mt-4 p-3.5 bg-rose-500/10 border border-rose-500/20 text-rose-500 rounded-xl text-[10px] flex flex-col space-y-2 text-left"
                       >
                         <div className="font-semibold">{activeError}</div>
@@ -725,7 +725,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             exit={{ opacity: 0, y: 40, filter: "blur(8px)" }}
-            transition={{ type: "spring", stiffness: 200, damping: 25, mass: 0.8 }}
+            transition={{ type: "spring" as const, stiffness: 200, damping: 25, mass: 0.8 }}
             className="w-full max-w-6xl flex-1 flex flex-col py-6 pb-24"
           >
             {selectedMode === "review" ? (
