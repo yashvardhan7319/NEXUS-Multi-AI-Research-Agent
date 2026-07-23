@@ -3,23 +3,22 @@ from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from tools import web_search , scrape_url 
-from dotenv import load_dotenv
-
 from dotenv import load_dotenv, find_dotenv
 import os
 
+# Load .env file if it exists (local dev), but never override system env vars
 dotenv_path = find_dotenv()
+if dotenv_path:
+    load_dotenv(dotenv_path)
 
-print("ENV FILE:", dotenv_path)
+GROQ_KEY = os.getenv("GROQ_API_KEY")
+print("GROQ KEY LOADED:", "YES" if GROQ_KEY else "MISSING!")
 
-load_dotenv(dotenv_path, override=True)
-
-print("KEY:", repr(os.getenv("GROQ_API_KEY")))
-
-#model setup 
+#model setup — explicitly pass the key so there's zero ambiguity
 llm = ChatGroq(
     model="llama-3.3-70b-versatile",
-    temperature=0
+    temperature=0,
+    groq_api_key=GROQ_KEY
 )
 
 
