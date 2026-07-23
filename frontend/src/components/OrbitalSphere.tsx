@@ -73,7 +73,7 @@ export default function OrbitalSphere({ activeAgent, activeStatus }: OrbitalSphe
       {/* 1. Search Agent (Top Left) */}
       <motion.div
         animate={isAgentActive("search") ? { scale: [1, 1.04, 1] } : {}}
-        transition={{ repeat: Infinity, duration: 2 }}
+        transition={isAgentActive("search") ? { repeat: Infinity, duration: 2 } : { type: "spring", stiffness: 300, damping: 25 }}
         className={`absolute top-6 left-6 md:-left-4 flex items-center space-x-2 px-3 py-1.5 rounded-full border shadow-sm transition-all duration-300 z-20 ${getAgentColorClass("search")}`}
       >
         <div className={`w-2 h-2 rounded-full ${isAgentActive("search") ? "bg-accent animate-ping" : "bg-zinc-600"}`} />
@@ -84,7 +84,7 @@ export default function OrbitalSphere({ activeAgent, activeStatus }: OrbitalSphe
       {/* 2. Reader Agent (Top Right) */}
       <motion.div
         animate={isAgentActive("reader") ? { scale: [1, 1.04, 1] } : {}}
-        transition={{ repeat: Infinity, duration: 2 }}
+        transition={isAgentActive("reader") ? { repeat: Infinity, duration: 2 } : { type: "spring", stiffness: 300, damping: 25 }}
         className={`absolute top-16 right-4 md:-right-8 flex items-center space-x-2 px-3 py-1.5 rounded-full border shadow-sm transition-all duration-300 z-20 ${getAgentColorClass("reader")}`}
       >
         <div className={`w-2 h-2 rounded-full ${isAgentActive("reader") ? "bg-cyan-400 animate-ping" : "bg-zinc-600"}`} />
@@ -95,7 +95,7 @@ export default function OrbitalSphere({ activeAgent, activeStatus }: OrbitalSphe
       {/* 3. Writer Agent (Bottom Left) */}
       <motion.div
         animate={isAgentActive("writer") ? { scale: [1, 1.04, 1] } : {}}
-        transition={{ repeat: Infinity, duration: 2 }}
+        transition={isAgentActive("writer") ? { repeat: Infinity, duration: 2 } : { type: "spring", stiffness: 300, damping: 25 }}
         className={`absolute bottom-20 left-4 md:-left-8 flex items-center space-x-2 px-3 py-1.5 rounded-full border shadow-sm transition-all duration-300 z-20 ${getAgentColorClass("writer")}`}
       >
         <div className={`w-2 h-2 rounded-full ${isAgentActive("writer") ? "bg-amber-400 animate-ping" : "bg-zinc-600"}`} />
@@ -106,7 +106,7 @@ export default function OrbitalSphere({ activeAgent, activeStatus }: OrbitalSphe
       {/* 4. Critic Agent (Bottom Right) */}
       <motion.div
         animate={isAgentActive("critic") ? { scale: [1, 1.04, 1] } : {}}
-        transition={{ repeat: Infinity, duration: 2 }}
+        transition={isAgentActive("critic") ? { repeat: Infinity, duration: 2 } : { type: "spring", stiffness: 300, damping: 25 }}
         className={`absolute bottom-10 right-6 md:-right-4 flex items-center space-x-2 px-3 py-1.5 rounded-full border shadow-sm transition-all duration-300 z-20 ${getAgentColorClass("critic")}`}
       >
         <div className={`w-2 h-2 rounded-full ${isAgentActive("critic") ? "bg-emerald-400 animate-ping" : "bg-zinc-600"}`} />
